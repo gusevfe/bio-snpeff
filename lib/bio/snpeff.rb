@@ -19,7 +19,7 @@ module Bio
                           attribute.as(:gene_name) >> str("|") >> 
                           attribute.as(:transcript_biotype) >> str("|") >> 
                           attribute.as(:gene_coding) >> str("|") >> 
-                          attribute.as(:transript_id) >> str("|") >> 
+                          attribute.as(:transcript_id) >> str("|") >> 
                           attribute.as(:exon_rank) >> str("|") >> 
                           attribute.as(:genotype_number) >> 
                           (str("|") >> attribute.as(:error)).repeat.as(:errors)
