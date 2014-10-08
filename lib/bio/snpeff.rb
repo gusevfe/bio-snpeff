@@ -7,7 +7,7 @@ module Bio
     end
 
     class Parser < Parslet::Parser
-      rule(:effects) { effect.repeat(1,1).as(:effect) >> (str(",") >> effect.as(:effect)).repeat }
+      rule(:effects) { effect.as(:effect).repeat(1, 1) >> (str(",") >> effect.as(:effect)).repeat }
       rule(:effect) { type.as(:type) >> str("(") >> attributes.as(:attributes) >> str(")") }
       rule(:type) { match['a-zA-Z0-9_'].repeat.as(:name) >> (str("[") >> (str("]").absent? >> any).repeat >> str("]")).maybe.as(:qualifier) }
       # Effect ( Effect_Impact | Functional_Class | Codon_Change | Amino_Acid_Change| Amino_Acid_Length | Gene_Name | Transcript_BioType | Gene_Coding | Transcript_ID | Exon_Rank  | Genotype_Number [ | ERRORS | WARNINGS ] )

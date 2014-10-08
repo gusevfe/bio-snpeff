@@ -34,8 +34,10 @@ describe Bio::Snpeff::Parser do
 
   context "tree" do
     it "should parse simple" do 
+      u = parser.parse("synonymous_variant(LOW|SILENT|acG/acA|p.Thr37Thr/c.111G>A|73|KCNQ1|protein_coding|CODING|ENST00000380776|2|1),sequence_feature[transmembrane_region:Transmembrane_region](LOW|||c.387G>A|676|KCNQ1|protein_coding|CODING|ENST00000155840|1|1)") 
+      expect(u.inspect).to eq(%{[{:effect=>{:type=>{:name=>"synonymous_variant"@0, :qualifier=>nil}, :attributes=>{:effect_impact=>"LOW"@19, :functional_class=>"SILENT"@23, :codon_change=>"acG/acA"@30, :amino_acid_change=>"p.Thr37Thr/c.111G>A"@38, :amino_acid_length=>"73"@58, :gene_name=>"KCNQ1"@61, :transcript_biotype=>"protein_coding"@67, :gene_coding=>"CODING"@82, :transript_id=>"ENST00000380776"@89, :exon_rank=>"2"@105, :genotype_number=>"1"@107}}}, {:effect=>{:type=>{:name=>"sequence_feature"@110, :qualifier=>"[transmembrane_region:Transmembrane_region]"@126}, :attributes=>{:effect_impact=>"LOW"@170, :functional_class=>[], :codon_change=>[], :amino_acid_change=>"c.387G>A"@176, :amino_acid_length=>"676"@185, :gene_name=>"KCNQ1"@189, :transcript_biotype=>"protein_coding"@195, :gene_coding=>"CODING"@210, :transript_id=>"ENST00000155840"@217, :exon_rank=>"1"@233, :genotype_number=>"1"@235}}}]})
       u = parser.parse("synonymous_variant(LOW|SILENT|acG/acA|p.Thr37Thr/c.111G>A|73|KCNQ1|protein_coding|CODING|ENST00000380776|2|1)") 
-      expect(u.inspect).to eq(%{{:effects=>[{:type=>{:name=>"synonymous_variant"@0, :qualifier=>nil}, :attributes=>{:effect_impact=>"LOW"@19, :functional_class=>"SILENT"@23, :codon_change=>"acG/acA"@30, :amino_acid_change=>"p.Thr37Thr/c.111G>A"@38, :amino_acid_length=>"73"@58, :gene_name=>"KCNQ1"@61, :transcript_biotype=>"protein_coding"@67, :gene_coding=>"CODING"@82, :transript_id=>"ENST00000380776"@89, :exon_rank=>"2"@105, :genotype_number=>"1"@107}}]}})
+      expect(u.inspect).to eq(%{[{:effect=>{:type=>{:name=>"synonymous_variant"@0, :qualifier=>nil}, :attributes=>{:effect_impact=>"LOW"@19, :functional_class=>"SILENT"@23, :codon_change=>"acG/acA"@30, :amino_acid_change=>"p.Thr37Thr/c.111G>A"@38, :amino_acid_length=>"73"@58, :gene_name=>"KCNQ1"@61, :transcript_biotype=>"protein_coding"@67, :gene_coding=>"CODING"@82, :transript_id=>"ENST00000380776"@89, :exon_rank=>"2"@105, :genotype_number=>"1"@107}}}]})
     end
   end
 end
