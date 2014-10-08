@@ -22,7 +22,7 @@ module Bio
                           attribute.as(:transript_id) >> str("|") >> 
                           attribute.as(:exon_rank) >> str("|") >> 
                           attribute.as(:genotype_number) >> 
-                          (str("|") >> attribute.as(:errors)).repeat
+                          (str("|") >> attribute.as(:error)).repeat.as(:errors)
       }
       rule(:attribute) { ((str("|") | str(")")).absent? >> any).repeat }
       root(:effects)
